@@ -1,4 +1,5 @@
 require('dotenv').config();
+const userLib = require('./backend/lib/userLib');
 const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
@@ -29,6 +30,15 @@ mongoose.connect(process.env.MONGO_CONNECTION_STRING,{},function(err){
    else
    {
     console.log("DB CONNECTED");
+    //TODO : donot create a user if atleast 1 user exists in a table
+    userLib.createFirstUser(function(err, res){
+        if(err){
+            console.error(err);
+        }
+        else{
+            console.log(res);
+        }
+    });
     app.listen(port, function(){
         console.log("Server is running on http://localhost:" + port);
     });
