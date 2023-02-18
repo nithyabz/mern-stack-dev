@@ -29,6 +29,13 @@
     
 </head>
 <body>
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+            <button id="theme" onclick="themeLightDark()" type="button" class="btn btn-outline-primary"><i
+                    class="fas fa-sun fa-lg fa-fw"></i></button>
+
+        </div>
+    </nav>
     <div class = "container main-container mt-5">
         <h1>What's the Weather?</h1>
         <div id = "inputBox" class="input-group mb-3 mt-5">
@@ -88,6 +95,7 @@
         searchBox.addEventListener("keypress", function(event){
             if(event.keyCode == 13){
                 getWeatherReport(searchBox.value);
+                searchBox.value = "";
             }
         })
         function getWeatherReport(city){
@@ -129,6 +137,20 @@
             pressure.innerHTML = `<span>Pressure</span> ${currentWeather.main.pressure}`
             visibility.innerHTML = `<span>Visibility</span> ${currentWeather.visibility}`
             windSpeed.innerHTML = `<span>Wind Speed</span> ${currentWeather.wind.speed}`
+        }
+        let light = true;
+        function themeLightDark() {
+            let theme = document.getElementById("theme");
+            if (light) {
+                light = false
+                document.documentElement.setAttribute('data-bs-theme', 'dark')
+                theme.innerHTML = `<i class="fas fa-sun fa-lg fa-fw"></i>`
+            } else {
+                light = true
+                document.documentElement.setAttribute('data-bs-theme', 'light')
+                theme.innerHTML = `<i class="fas fa-moon fa-lg fa-fw"></i>`
+            }
+
         }
         function manageImage(weatherType) {
             if (weatherType === 'Clear') {
