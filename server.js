@@ -10,23 +10,29 @@ const options = {
 }
 app.use(express.static("public",options));
 app.get("/", function(req, res){
-    // res.send("Hi Nithya");
     res.sendFile(__dirname + "/index.html");
 });
+app.get("/todo", function(req, res){
+    res.sendFile(__dirname + "/public/todoindex.html");
+});
+app.get("/api/todos", function(request, response){
+	response.json([
+		{name : "todo1", isCompleted: true},
+		{name : "todo1", isCompleted: false},
+		{name : "todo1", isCompleted: true},
+
+	]);
+});
 app.get("/resume", function(req, res){
-    // res.send("Hi Nithya");
     res.sendFile(__dirname + "/public/resume.html");
 });
 app.get("/cssDemo", function(req, res){
-    // res.send("Hi Nithya");
     res.sendFile(__dirname + "/public/resumeClass.html");
 });
 app.get("/cards", function(req, res){
-    // res.send("Hi Nithya");
     res.sendFile(__dirname + "/public/cardDemo.html");
 });
 app.get("/weather", function(req, res){
-    // res.send("Hi Nithya");
     res.sendFile(__dirname + "/public/weather.html");
 });
 mongoose.set('strictQuery',true);

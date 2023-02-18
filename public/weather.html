@@ -32,7 +32,7 @@
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">
             <button id="theme" onclick="themeLightDark()" type="button" class="btn btn-outline-primary"><i
-                    class="fas fa-sun fa-lg fa-fw"></i></button>
+                    class="fas fa-moon fa-lg fa-fw"></i></button>
 
         </div>
     </nav>
@@ -138,7 +138,7 @@
             visibility.innerHTML = `<span>Visibility</span> ${currentWeather.visibility}`
             windSpeed.innerHTML = `<span>Wind Speed</span> ${currentWeather.wind.speed}`
         }
-        let light = true;
+        var light = true;
         function themeLightDark() {
             let theme = document.getElementById("theme");
             if (light) {
